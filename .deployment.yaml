@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viatab-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: viatab-backend
+  template:
+    metadata:
+      labels:
+        app: viatab-backend
+    spec:
+      containers:
+      - name: viatab-backend
+        image: viatab-backend:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: DATABASE_URL
+          value: postgres://postgres:password@localhost:5432/viatab
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viatab-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: viatab-frontend
+  template:
+    metadata:
+      labels:
+        app: viatab-frontend
+    spec:
+      containers:
+      - name: viatab-frontend
+        image: viatab-frontend:latest
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: viatab-backend-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: viatab-backend
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: viatab-frontend-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: viatab-frontend
