@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("viatab-backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22642330d4b90dbec520f70b773e3b3382aecba4")]
 [assembly: System.Reflection.AssemblyProductAttribute("viatab-backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("viatab-backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
