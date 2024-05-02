@@ -14,12 +14,20 @@ spec:
     spec:
       containers:
       - name: viatab-backend
-        image: viatab-backend:latest
+        image: viatab-backend:${{ github.sha }}  
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
         env:
         - name: DATABASE_URL
-          value: postgres://postgres:password@localhost:5432/viatab
+          value: postgres://postgres:password@postgres-service:5432/viatab
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
 
 ---
 
@@ -39,7 +47,14 @@ spec:
     spec:
       containers:
       - name: viatab-frontend
-        image: viatab-frontend:latest
+        image: viatab-frontend:${{ github.sha }}
+        imagePullPolicy: Never
         ports:
         - containerPort: 8080
-
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
