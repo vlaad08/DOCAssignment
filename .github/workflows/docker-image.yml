@@ -1,0 +1,72 @@
+name: Continuous Integration and Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: viatab
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '8.0' 
+
+    - name: Restore and Build Backend
+      run: |
+        dotnet restore ./App
+        dotnet build ./App --no-restore
+
+    - name: Test Backend
+      run: |
+        dotnet test ./App --no-build
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'
+
+    - name: Build and Test Frontend
+      run: |
+        cd viatab-frontend
+        npm install
+        npm run build
+        npm test
+
+    - name: Install Minikube
+      run: |
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        sudo install minikube-linux-amd64 /usr/local/bin/minikube
+        minikube start
+        minikube docker-env
+
+    - name: Build Docker images
+      run: |
+        docker build -t viatab-backend:${{ github.sha }} ./App
+        docker build -t viatab-frontend:${{ github.sha }} ./viatab-frontend
+
+    - name: Deploy to Minikube
+      run: |
+        kubectl apply -f deployment.yaml
+        kubectl set image deployment/viatab-backend viatab-backend=viatab-backend:${{ github.sha }}
+        kubectl set image deployment/viatab-frontend viatab-frontend=viatab-frontend:${{ github.sha }}
