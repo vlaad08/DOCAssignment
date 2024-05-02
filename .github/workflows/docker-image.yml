@@ -3,7 +3,7 @@ name: Continuous Integration and Deployment
 on:
   push:
     branches:
-      - master
+      - master  
 
 jobs:
   build-and-deploy:
@@ -58,7 +58,7 @@ jobs:
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         sudo install minikube-linux-amd64 /usr/local/bin/minikube
         minikube start
-        minikube docker-env
+        eval $(minikube docker-env)
 
     - name: Build Docker images
       run: |
@@ -70,6 +70,4 @@ jobs:
         kubectl apply -f deployment.yaml
         kubectl set image deployment/viatab-backend viatab-backend=viatab-backend:${{ github.sha }}
         kubectl set image deployment/viatab-frontend viatab-frontend=viatab-frontend:${{ github.sha }}
-    - name: Minikube Service List
-      run: |
-        minikube service list
+
