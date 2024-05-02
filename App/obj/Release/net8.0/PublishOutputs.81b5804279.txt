@@ -1,0 +1,5 @@
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/publish/viatab-backend
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/publish/viatab-backend.dll
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/publish/viatab-backend.deps.json
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/publish/viatab-backend.runtimeconfig.json
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/publish/viatab-backend.pdb

@@ -1,0 +1,14 @@
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/viatab-backend
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/viatab-backend.deps.json
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/viatab-backend.runtimeconfig.json
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/viatab-backend.dll
+/home/vlad/Assignments/DOCAssignment/App/bin/Release/net8.0/viatab-backend.pdb
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/viatab-backend.GeneratedMSBuildEditorConfig.editorconfig
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/viatab-backend.AssemblyInfoInputs.cache
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/viatab-backend.AssemblyInfo.cs
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/viatab-backend.csproj.CoreCompileInputs.cache
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/viatab-backend.dll
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/refint/viatab-backend.dll
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/viatab-backend.pdb
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/viatab-backend.genruntimeconfig.cache
+/home/vlad/Assignments/DOCAssignment/App/obj/Release/net8.0/ref/viatab-backend.dll
