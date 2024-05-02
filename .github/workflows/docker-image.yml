@@ -70,3 +70,6 @@ jobs:
         kubectl apply -f deployment.yaml
         kubectl set image deployment/viatab-backend viatab-backend=viatab-backend:${{ github.sha }}
         kubectl set image deployment/viatab-frontend viatab-frontend=viatab-frontend:${{ github.sha }}
+    - name: Minikube Service List
+      run: |
+        minikube service list
