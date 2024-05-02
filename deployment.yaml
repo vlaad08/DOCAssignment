@@ -41,32 +41,5 @@ spec:
       - name: viatab-frontend
         image: viatab-frontend:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: viatab-backend-service
-spec:
-  type: ClusterIP
-  ports:
-  - port: 80
-    targetPort: 80
-  selector:
-    app: viatab-backend
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: viatab-frontend-service
-spec:
-  type: ClusterIP
-  ports:
-  - port: 80
-    targetPort: 80
-  selector:
-    app: viatab-frontend
