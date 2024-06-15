@@ -16,4 +16,14 @@ public class DepartmentLogic : IDepartmentLogic
     {
         return await repository.CreateDepartment(department);
     }
+
+    public Task<Department?> GetDepartment(string id)
+    {
+        return repository.GetDepartment(id);
+    }
+
+    public Task<IEnumerable<Department>> GetDepartments()
+    {
+        return repository.GetDepartments();
+    }
 }

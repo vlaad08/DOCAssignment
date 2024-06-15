@@ -18,6 +18,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TabloidContext>();
 builder.Services.AddScoped<IDepartmentLogic, DepartmentLogic>();
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IStoryLogic, StoryLogic>();
+builder.Services.AddScoped<IStoryRepository, StoryRepository>();
 
 builder.Services.AddSwaggerGen(c =>
 {

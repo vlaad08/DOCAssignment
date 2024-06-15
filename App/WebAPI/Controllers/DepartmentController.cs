@@ -1,11 +1,12 @@
-﻿using DBConnection.Logic.Interface;
+﻿
+using DBConnection.Logic.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
 
 namespace WebApi.Controllers;
 
-[Controller] 
 [Route("departments")]
+[ApiController] 
 public class DepartmentController
 {
 
@@ -17,8 +18,7 @@ public class DepartmentController
         this.departmentLogic = departmentLogic;
     }
     
-    [HttpPost]
-    [Route("")]
+    [HttpPost, Route("")]
     public async Task<ActionResult<Department>> CreateDepartment([FromBody]CreateDepartmentInput department)
     {
         var input = new Department
@@ -29,4 +29,24 @@ public class DepartmentController
         var dep = await departmentLogic.CreateDepartment(input);
         return dep;
     }
+
+    [HttpGet, Route("")]
+    public async Task<ActionResult<IEnumerable<Department>>> GetDepartments()
+    {
+        var deps = await departmentLogic.GetDepartments();
+        return deps.ToList();
+    }
+
+    [HttpGet, Route("{id}")]
+    public async Task<ActionResult<Department>> GetDepartment(string id)
+    {
+        var dep = await departmentLogic.GetDepartment(id);
+        if (dep == null)
+        {
+            throw new Exception("Department not found");
+        }
+        return dep;
+    }
+
+    
 }
