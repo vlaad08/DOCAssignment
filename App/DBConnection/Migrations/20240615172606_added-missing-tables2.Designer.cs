@@ -2,6 +2,7 @@
 using DBConnection.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DBConnection.Migrations
 {
     [DbContext(typeof(TabloidContext))]
-    partial class TabloidContextModelSnapshot : ModelSnapshot
+    [Migration("20240615172606_added-missing-tables2")]
+    partial class addedmissingtables2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,78 +27,109 @@ namespace DBConnection.Migrations
 
             modelBuilder.Entity("Shared.Models.Department", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("department", "viatabloid");
                 });
 
             modelBuilder.Entity("Shared.Models.DepartmentStory", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("departmentId")
+                    b.Property<string>("DepartmentId")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("storyId")
+                    b.Property<string>("StoryId")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("departmentId");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("storyId");
+                    b.HasIndex("StoryId");
 
                     b.ToTable("departmentStory", "viatabloid");
                 });
 
             modelBuilder.Entity("Shared.Models.Story", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("body")
+                    b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("title")
+                    b.Property<string>("DepartmentId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("StoryId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("StoryId");
 
                     b.ToTable("story", "viatabloid");
                 });
 
             modelBuilder.Entity("Shared.Models.DepartmentStory", b =>
                 {
-                    b.HasOne("Shared.Models.Department", "department")
+                    b.HasOne("Shared.Models.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("departmentId")
+                        .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Shared.Models.Story", "story")
+                    b.HasOne("Shared.Models.Story", "Story")
                         .WithMany()
-                        .HasForeignKey("storyId")
+                        .HasForeignKey("StoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("department");
+                    b.Navigation("Department");
 
-                    b.Navigation("story");
+                    b.Navigation("Story");
+                });
+
+            modelBuilder.Entity("Shared.Models.Story", b =>
+                {
+                    b.HasOne("Shared.Models.Department", null)
+                        .WithMany("Stories")
+                        .HasForeignKey("DepartmentId");
+
+                    b.HasOne("Shared.Models.Story", null)
+                        .WithMany("Stories")
+                        .HasForeignKey("StoryId");
+                });
+
+            modelBuilder.Entity("Shared.Models.Department", b =>
+                {
+                    b.Navigation("Stories");
+                });
+
+            modelBuilder.Entity("Shared.Models.Story", b =>
+                {
+                    b.Navigation("Stories");
                 });
 #pragma warning restore 612, 618
         }

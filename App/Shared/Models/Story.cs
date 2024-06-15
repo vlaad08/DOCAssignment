@@ -1,17 +1,18 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace Shared.Models
-{
-    
+{ 
     public class Story
     {
-        public String Id { get; }
-        public String Title { get; set; }
-        public String Body { get; set; }
-        public List<Story> Stories { get; } = [];
+        [Key]
+        public string id { get; }
+        public string title { get; init; }
+        public string body { get; init; }
 
         public Story()
         {
-            Id = Guid.NewGuid().ToString();
+            id = Guid.NewGuid().ToString();
         }
     }
 }

@@ -7,14 +7,13 @@ namespace Shared.Models
     public class Department
     {
         [Key]
-        public String Id { get; }
-        public String Name { get; set; }
-        public String? Description { get; set; }
-        public List<Story> Stories { get; } = [];
+        public string id { get; }
+        public string name { get; init; }
+        public string? description { get; init; }
 
         public Department()
         {
-            Id = Guid.NewGuid().ToString();
+            id = Guid.NewGuid().ToString();
         }
     }
     

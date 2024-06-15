@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/vlad/.nuget/packages/": {}
+    "C:\\Users\\vlada\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/vlad/github/DOCAssignment/App/Shared/Shared.csproj",
+      "projectUniqueName": "C:\\Users\\vlada\\Documents\\GitHub\\DOCAssignment\\App\\Shared\\Shared.csproj",
       "projectName": "Shared",
-      "projectPath": "/home/vlad/github/DOCAssignment/App/Shared/Shared.csproj",
-      "packagesPath": "/home/vlad/.nuget/packages/",
-      "outputPath": "/home/vlad/github/DOCAssignment/App/Shared/obj/",
+      "projectPath": "C:\\Users\\vlada\\Documents\\GitHub\\DOCAssignment\\App\\Shared\\Shared.csproj",
+      "packagesPath": "C:\\Users\\vlada\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vlada\\Documents\\GitHub\\DOCAssignment\\App\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/vlad/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\vlada\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
