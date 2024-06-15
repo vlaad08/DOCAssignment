@@ -1,0 +1,41 @@
+.upload-form-container {
+    padding: 20px;
+    width: 30%;
+}
+
+.upload-form-container select,
+.upload-form-container input,
+.upload-form-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.upload-form-container textarea {
+    height: 150px;
+}
+
+.upload-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.upload-form-container button[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.upload-form-container button[type="submit"]:hover {
+    background-color: #45a049;
+}

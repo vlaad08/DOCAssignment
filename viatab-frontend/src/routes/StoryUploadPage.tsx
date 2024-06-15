@@ -1,14 +1,22 @@
 import React from "react";
+import UploadForm from "../components/UploadForm";
+import Navbar from "../components/Navbar";
+import "./StoryUploadPage.css";
 
 
 
 
-//add UploadForm component here
 const StoryUploadPage = () => {
     return (
-        <div>
-            <h1>Story Upload</h1>
-            <p>Upload your story here!</p>
-        </div>
+        <>
+            <Navbar></Navbar>
+            <div className="story-upload-page-container">
+                <h1 className="story-upload-page-title">Upload a Story</h1>
+                <UploadForm></UploadForm>
+            </div>
+        </>
     );
 }
+
+
+export default StoryUploadPage;

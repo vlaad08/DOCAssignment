@@ -1,0 +1,12 @@
+.story-upload-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.story-upload-page-title {
+    font-size: 24px;
+    color: #333;
+    margin: 20px 0;
+}

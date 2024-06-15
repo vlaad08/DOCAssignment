@@ -1,0 +1,25 @@
+.homePageContainer {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homePageContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homePageHeader {
+    color: #333;
+    font-size: 2rem;
+}
+
+.homePageText {
+    color: #666;
+    font-size: 1.5rem;
+    max-width: 50%;
+    text-align: center;
+}
