@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: viatab-backend
+        image: viatab-backend
+        ports:
+        - containerPort: 5171
+        env:
+        - name: ASPNETCORE_URLS
+          value: "http://+:5171"
+        - name: DB_CONNECTION_STRING
+          value: "Host=db;Port=5432;Database=postgres;Username=postgres;Password=password"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  ports:
+  - port: 5171
+  selector:
+    app: backend
