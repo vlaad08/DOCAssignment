@@ -66,9 +66,7 @@ jobs:
 
     - name: Deploy to Minikube
       run: |
-        kubectl apply -f deployment.yaml
-        kubectl set image deployment/viatab-backend viatab-backend=viatab-backend:${{ github.sha }}
-        kubectl set image deployment/viatab-frontend viatab-frontend=viatab-frontend:${{ github.sha }}
+        kubectl apply -f ./k8s-config/
 
     - name: Check Minikube services
       run: |
