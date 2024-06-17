@@ -22,32 +22,36 @@ const DepartmentPage = () => {
 
     const { departmentId } = useParams<{ departmentId: string }>()
 
-    React.useEffect(() => {
-        fetchDepartmentInfo();
-        if(departmentId){
-            fetchStories();
-        }
-        setLoading(false);
-    }, [departmentId]);
-
-    const fetchDepartmentInfo = async () => {
+    const fetchDepartmentInfo = React.useCallback(async () => {
         try {
             const response = await axios.get(`${address}/departments/${departmentId}`);
             setDepartment(response.data);
         } catch (error) {
             console.error("Failed to fetch departments:", error);
         }
-    };
+    }, [departmentId]); 
 
-    const fetchStories = async () => {
+    const fetchStories = React.useCallback(async () => {
         try {
             const response = await axios.get(`${address}/stories/departments/${departmentId}`);
-            setStories(response.data);
+            setStories(response.data)
         } catch (error) {
             console.error("Failed to fetch stories:", error);
         }
-    }
+    }, [departmentId]);
 
+
+    React.useEffect(() => {
+        fetchDepartmentInfo();
+        if(departmentId){
+            fetchStories();
+        }
+        setLoading(false);
+    }, [departmentId, fetchDepartmentInfo, fetchStories]);
+
+    
+
+    
     if(loading) {
         return <p>Loading...</p>
     }
