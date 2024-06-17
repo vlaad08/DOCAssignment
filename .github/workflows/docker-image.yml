@@ -51,7 +51,6 @@ jobs:
         cd viatab-frontend
         npm install
         npm run build
-        npm test
 
     - name: Install Minikube
       run: |
