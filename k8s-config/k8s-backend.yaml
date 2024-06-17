@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: viatab-backend
-        image: viatab-backend
+        image: viatab-backend:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 5171
         env:

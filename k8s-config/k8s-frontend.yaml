@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: viatab-frontend
-        image: viatab-frontend
+        image: viatab-frontend:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 3000
 
